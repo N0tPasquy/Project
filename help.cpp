@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-    cout<<"Prova per far capire cosa succede quando vengono creati altri file"<<endl;
+    cout<<"GHATY"<<endl;
 
     return 0;
 }
