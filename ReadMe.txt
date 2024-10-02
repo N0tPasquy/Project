@@ -6,4 +6,4 @@
     con il linguaggio c++ e l'utilizzo di GitHub con le sue reporitory e la
     condivisione dei file con GitHub Desktop
 
---> Rispetto di nessuno, paura di tutti <3
+--> Rispetto per nessuno, paura di tutti <3
