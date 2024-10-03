@@ -40,21 +40,18 @@ public:
         F.seekg(ios::beg);                  //imposto il puntatore del file all'inizio del file, nel caso l'ultima apertura non lo avesse reimpostato
 
         string Numeri, Simboli, Rigo;       //dichiaro le stringhe e le variabili di appoggio
+        getline(F, Rigo);
+        //F.seekg(ios::beg);
 
         while (!F.eof()) {
+            int Lunghezza = Rigo.size()+1;
+            char ch[Lunghezza];
+            F.get(ch, Lunghezza);
+
+            cout<<ch<<endl;
+
             getline(F, Rigo);
-            int lunghezza=Rigo.length();
-            char ch[lunghezza];
 
-            if ((F.get(ch,lunghezza,'<')) ||  (F.get(ch,lunghezza,'>'))){
-                 //Simboli=+ch;
-                cout<<ch<<endl;
-            }else{
-                Numeri=+ch;
-            }
-
-            //int a = stoi(Rigo);
-            //cout << a << endl;
             //!-- DA FINIRE --
             //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE VAFFANCULO --
             //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --coglione
@@ -65,8 +62,7 @@ public:
             //quando il codice viene eseguito, riusciamo a leggere da file, ora bisogna capire come fare per separare i caratteri '<' e '>'
             //dai numeri per ogni riga. Qui mi arrendo per ora
         }
-        cout<<Simboli<<endl;
-        cout<<Numeri<<endl;
+
         F.close();                             //dopo tutte le operazioni chido il file
 
     }
