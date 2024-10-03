@@ -39,13 +39,12 @@ public:
         string Numeri, Simboli, Rigo;       //dichiaro le stringhe e le variabili di appoggio
         char ch;
 
-        getline(F, Rigo);
         while (!F.eof()) {
-            cout<<Rigo<<endl;
+            getline(F, Rigo);
                                     //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE VAFFANCULO
                                     //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI
                                     //!-- NEL NOME DEL PADRE, DEL FIGLIO E DELLO SPIRITO SANTO
-            getline(F, Rigo);
+            cout<<Rigo<<endl;
             //se il codice viene eseguito, riusciamo a leggere da file, ora bisogna capire come fare per separare i caratteri '<' e '>'
             //dai numeri per ogni riga. Qui mi arrendo per ora
         }
