@@ -43,7 +43,7 @@ public:
         while (!F.eof()) {
             getline(F, Rigo);
             int a=stoi(Rigo);
-            cout << a <<endl;
+            cout<<a<<endl;
                                     //!-- DA FINIRE --
                                     //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE VAFFANCULO --
                                     //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --coglione
