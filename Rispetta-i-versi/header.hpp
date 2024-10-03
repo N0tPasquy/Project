@@ -28,8 +28,8 @@ public:
 
     void Risolvi() {
         fstream F;                            //ifstream classe che ho importato da <fstream>, F è un oggetto della classe ifstream
-        //F.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
-        F.open(Soluzione.c_str(), ios::in);             // .c_str() estrae la stringa di caratteri in stile C
+        F.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
+        //F.open(Soluzione.c_str(), ios::in);             // .c_str() estrae la stringa di caratteri in stile C
 
         if (!F) {
             cerr << "Impossibile aprire il file"
@@ -40,10 +40,18 @@ public:
         F.seekg(ios::beg);                  //imposto il puntatore del file all'inizio del file, nel caso l'ultima apertura non lo avesse reimpostato
 
         string Numeri, Simboli, Rigo;       //dichiaro le stringhe e le variabili di appoggio
-        char ch;
 
         while (!F.eof()) {
             getline(F, Rigo);
+            int lunghezza=Rigo.length();
+            char ch[lunghezza];
+
+            if ((F.get(ch,lunghezza,'<')) ||  (F.get(ch,lunghezza,'>'))){
+                 //Simboli=+ch;
+                cout<<ch<<endl;
+            }else{
+                Numeri=+ch;
+            }
 
             //int a = stoi(Rigo);
             //cout << a << endl;
@@ -53,13 +61,15 @@ public:
             //!-- NEL NOME DEL PADRE, DEL FIGLIO E DELLO SPIRITO SANTO --
             //!-- da capire in modo più chiaro cosa bisgona fare in questo ciclo
             //!-- dovrei leggere da file UNA SOLA RIGA ALLA VOLTA, salvare i numeri e i caratteri nelle rispettive stringhe create apposta, confrontare la stringa caratteri appena creata con UNA RIGA ALLA VOLTA le righe del file "Problema.txt"
-            cout << Rigo << endl;
+            //cout << Rigo << endl;
             //quando il codice viene eseguito, riusciamo a leggere da file, ora bisogna capire come fare per separare i caratteri '<' e '>'
             //dai numeri per ogni riga. Qui mi arrendo per ora
         }
-
+        cout<<Simboli<<endl;
+        cout<<Numeri<<endl;
         F.close();                             //dopo tutte le operazioni chido il file
 
     }
+
 };
 #endif //RISPETTA_I_VERSI_HEADER_HPP
