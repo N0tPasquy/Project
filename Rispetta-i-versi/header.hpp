@@ -26,9 +26,9 @@ private:
     string Soluzione = "Soluzione.txt";
 public:
     void Risolvi(){
-        ifstream F;                            //ifstream classe che ho importato da <fstream>, F è un oggetto della classe ifstream
+        fstream F;                            //ifstream classe che ho importato da <fstream>, F è un oggetto della classe ifstream
         //F.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
-        F.open(Soluzione.c_str());             // .c_str() estrae la stringa di caratteri in stile C
+        F.open(Soluzione.c_str(),ios::in);             // .c_str() estrae la stringa di caratteri in stile C
 
         if(!F){
             cerr << "Impossibile aprire il file"<<endl;     //con questo if controllo se il file è stato aperto correttamente, se così non fosse lo notifico a video ed esco
@@ -42,9 +42,11 @@ public:
 
         while (!F.eof()) {
             getline(F, Rigo);
+            int a=stoi(Rigo);
+            cout << a <<endl;
                                     //!-- DA FINIRE --
                                     //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE VAFFANCULO --
-                                    //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --
+                                    //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --coglione
                                     //!-- NEL NOME DEL PADRE, DEL FIGLIO E DELLO SPIRITO SANTO --
                                     //!-- da capire in modo più chiaro cosa bisgona fare in questo ciclo
                                     //!-- dovrei leggere da file UNA SOLA RIGA ALLA VOLTA, salvare i numeri e i caratteri nelle rispettive stringhe create apposta, confrontare la stringa caratteri appena creata con UNA RIGA ALLA VOLTA le righe del file "Problema.txt"
