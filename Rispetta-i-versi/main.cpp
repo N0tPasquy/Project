@@ -1,6 +1,9 @@
-#include <iostream>
+#include "header.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Risolutore r;
+    r.Risolvi();
+
     return 0;
 }
