@@ -7,3 +7,6 @@
     condivisione dei file con GitHub Desktop
 
 --> Rispetto per nessuno, paura di tutti <3
+
+--> Rispetta-i-versi
+    - è un esercizio da svolgere per il Laboratorio di ASD
