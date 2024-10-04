@@ -20,7 +20,7 @@
 
 #include <vector>   //libreria per poter usare i vector con le loro function, come .push_back()
 
-#include <fstream>  //libreria importata per poter utilizzare gli oggetti di tipo fstream, ifstream e ofstream. Serve per leggere/scrivere su file
+#include <fstream>  //Libreria importata per poter utilizzare gli oggetti di tipo fstream, ifstream e ofstream. Serve per leggere/scrivere su file
 using namespace std;
 
 class Risolutore {
@@ -30,55 +30,59 @@ private:
 public:
 
     void Risolvi() {
-        fstream F;                            //ifstream classe che ho importato da <fstream>, F è un oggetto della classe ifstream
-        //F.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
-        F.open(Soluzione, ios::in);
+        fstream S;                            //ifstream classe che ho importato da <fstream>, F è un oggetto della classe ifstream
+        fstream P;
+        //S.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
+        S.open(Soluzione, ios::in);
+        P.open(Problema, ios::in);
 
-        if (!F) {
+        if (!S) {
             cerr << "Impossibile aprire il file"
-                 << endl;     //con questo if controllo se il file è stato aperto correttamente, se così non fosse lo notifico a video ed esco
+                 << endl;     //con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
             exit(0);
         }
 
-        string Rigo;            //dichiaro la stringa in stile C++, la stringa in stile array di char (stile C) e le variabili che ci serviranno
-        F.seekg(ios::beg);                  //imposto il puntatore del file all'inizio del file, nel caso l'ultima apertura non lo avesse reimpostato
+        if(!P){
+            cerr << "Impossibile aprire il file"
+                 << endl;     //Stessa cosa per il file "Problema"
+            exit(0);
+        }
 
-        while (!F.eof()) {
+        string Rigo;            //dichiaro la stringa in stile C++ e le variabili che ci serviranno
+        S.seekg(ios::beg);      //imposto il puntatore del file all'inizio del file, nel caso l'ultima apertura non lo avesse reimpostato
+
+        while (!S.eof()) {
             vector <string> ch, Numeri, Simboli;
 
             //--> Procedo a salvare un rigo del file letto in input in una stringa classe stile C++ <--
-            getline(F, Rigo);   //con getline() mi salvo la riga del file nella variabile Rigo, nella prima iterazione contiene: 1<4>2<3<5
+            getline(S, Rigo);   //con getline() mi salvo la riga del file nella variabile Rigo, nella prima iterazione contiene: 1<4>2<3<5
 
             //--> controllo carattere per carattere il Rigo, quando trovo un simbolo < o > lo salvo nel vector Simboli,
             // quando invece non è così lo salvo nel vector Numeri <--
-            for(int i = 0; i < Rigo.length(); i++){
-                if(Rigo[i] == '<' || Rigo[i] == '>'){
-                    Simboli.push_back(string(1, Rigo[i]));
-                }else /*if(Rigo[i] >= '1' && Rigo[i] <= '9')*/{
-                    Numeri.push_back(string(1, Rigo[i]));
+            for(int i = 0; i < Rigo.length(); i++){     //Ciclo che mi scorre tutto il Rigo
+                if(Rigo[i] == '<' || Rigo[i] == '>'){   //If che controlla l' i-esimo carattere del Rigo
+                    Simboli.push_back(string(1, Rigo[i]));  //Se siamo il carattere controllato è un '<' o '>' lo inserisce nel vector dei Simboli
+                }else {
+                    Numeri.push_back(string(1, Rigo[i]));   //Altrimenti lo inserisce nel vector dei Numeri
                 }
             }
 
-            for (int i = 0; i < Numeri.size(); i++) {
-                cout<<Numeri[i];
-            }
-            cout<<endl;
-            for (int i = 0; i < Simboli.size(); ++i) {
-                cout<<Simboli[i];
-            }
-            cout<<endl;
+            //Dopo questo ciclo ho due vector popolati, uno con solo numeri e un altro con solo simboli.
+            //Dobbiamo confrontare se i simboli di vector Simboli corrispondono ai simboli dell' i-esimo rigo del file
+
+
 
             //!-- DA FINIRE --
             //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE E I VECTOR VAFFANCULO --
             //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --
             //!-- NEL NOME DEL PADRE, DEL FIGLIO E DELLO SPIRITO SANTO --
-            //!-- da capire in modo più chiaro cosa bisgona fare in questo ciclo
+            //!-- da capire in modo più chiaro cosa bisogna fare in questo ciclo
             //!-- dovrei leggere da file UNA SOLA RIGA ALLA VOLTA, salvare i numeri e
             //! i caratteri nelle rispettive stringhe create apposta, confrontare la stringa
             //! caratteri appena creata con UNA RIGA ALLA VOLTA le righe del file "Problema.txt"
         }
 
-        F.close();  //dopo tutte le operazioni chiudo il file
+        S.close();  //dopo tutte le operazioni chiudo il file
 
     }
 
