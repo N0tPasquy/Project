@@ -48,8 +48,9 @@ public:
             exit(0);
         }
 
-        string Rigo;            //dichiaro la stringa in stile C++ e le variabili che ci serviranno
+        string Rigo, rSoluz;            //dichiaro la stringa in stile C++ e le variabili che ci serviranno
         S.seekg(ios::beg);      //imposto il puntatore del file all'inizio del file, nel caso l'ultima apertura non lo avesse reimpostato
+        P.seekg(ios::beg);
 
         while (!S.eof()) {
             vector <string> ch, Numeri, Simboli;
@@ -67,9 +68,13 @@ public:
                 }
             }
 
+            getline(P, rSoluz); //Questo getline() salva l' i-esimo rigo del file "Problema" nella stringa rSoluz
+            if(rSoluz.c_str() == Simboli){      //prima di fare questo devo trasformare rSoluz in un vector per poter fare il confronto
+
+            }
+
             //Dopo questo ciclo ho due vector popolati, uno con solo numeri e un altro con solo simboli.
             //Dobbiamo confrontare se i simboli di vector Simboli corrispondono ai simboli dell' i-esimo rigo del file
-
 
 
             //!-- DA FINIRE --
