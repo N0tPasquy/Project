@@ -81,6 +81,7 @@ public:
             //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE E I VECTOR VAFFANCULO --
             //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --
             //!-- NEL NOME DEL PADRE, DEL FIGLIO E DELLO SPIRITO SANTO --
+            //!-- Bravo Pasquà! continua così 
             //!-- da capire in modo più chiaro cosa bisogna fare in questo ciclo
             //!-- dovrei leggere da file UNA SOLA RIGA ALLA VOLTA, salvare i numeri e
             //! i caratteri nelle rispettive stringhe create apposta, confrontare la stringa
