@@ -18,9 +18,7 @@
 #include <iostream>
 #include <string>   //questa libreria invece lavora sulle stringhe trattandole come classi, quindi in modo più dinamico e in stile C++.
 
-                    //con questa libreria possiamo lavorare sulle stringhe come se fossero array di char, come si fa in C,
-#include <cstring>  //si utilizza per le sue funzioni più importanti come: strcpy(), strcmp(). La prima fa la copia di una stringa in un altra,
-                    //la seconda confronta due stringhe
+#include <vector>   //libreria per poter usare i vector con le loro function, come .push_back()
 
 #include <fstream>  //libreria importata per poter utilizzare gli oggetti di tipo fstream, ifstream e ofstream. Serve per leggere/scrivere su file
 using namespace std;
@@ -33,8 +31,8 @@ public:
 
     void Risolvi() {
         fstream F;                            //ifstream classe che ho importato da <fstream>, F è un oggetto della classe ifstream
-        F.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
-        //F.open(Soluzione.c_str(), ios::in);             // .c_str() estrae la stringa di caratteri in stile C
+        //F.open("Soluzione.txt");             //F è un oggetto di ifstream, quindi apre in input il file "Soluzione.txt"
+        F.open(Soluzione, ios::in);
 
         if (!F) {
             cerr << "Impossibile aprire il file"
@@ -42,32 +40,36 @@ public:
             exit(0);
         }
 
-        //TUTTA QUESTA PARTE, FINO ALLA RIGA 50, NON È NECESSARIA. VIENE USATA SOLO PER FARE DELLE PROVE DI DEBUG
-        string Rigo;            //dichiaro la stringa in stile C++ e le variabili che ci serviranno
-        getline(F, Rigo);
+        string Rigo;            //dichiaro la stringa in stile C++, la stringa in stile array di char (stile C) e le variabili che ci serviranno
         F.seekg(ios::beg);                  //imposto il puntatore del file all'inizio del file, nel caso l'ultima apertura non lo avesse reimpostato
-        int Lunghezza = Rigo.size()+1;
-        char ch[Lunghezza];
 
         while (!F.eof()) {
-            //--> Procedo a salvare un rigo del file letto in input in una stringa classe stile C++
+            vector <string> ch, Numeri, Simboli;
+
+            //--> Procedo a salvare un rigo del file letto in input in una stringa classe stile C++ <--
             getline(F, Rigo);   //con getline() mi salvo la riga del file nella variabile Rigo, nella prima iterazione contiene: 1<4>2<3<5
 
-            //--> adesso bisogna convertire string Rigo in un array di caratteri
-            strcpy(ch, Rigo.c_str());   //bisogna includere la libreria <cstring> per usare questa function. Non fa altro che copiare una stringa dentro un altra stringa.
-                                                    // In input accetta solo array di char, per questo la stringa "Rigo" utilizzo il metodo .c_str(), non fa altro che convertire
-                                                    // da tipo classe a tipo array di char
-
-            //--> Una volta copiata la stringa C++ Rigo nell' array di char C ch, possiamo procedere a separare i numeri dai simboli '<' e '>'
-
-            /*Lunghezza = Rigo.size()+1;
-            for (int i = 0; i < Lunghezza; i++) {
-                    cout<<ch[i];
+            //--> controllo carattere per carattere il Rigo, quando trovo un simbolo < o > lo salvo nel vector Simboli,
+            // quando invece non è così lo salvo nel vector Numeri <--
+            for(int i = 0; i < Rigo.length(); i++){
+                if(Rigo[i] == '<' || Rigo[i] == '>'){
+                    Simboli.push_back(string(1, Rigo[i]));
+                }else /*if(Rigo[i] >= '1' && Rigo[i] <= '9')*/{
+                    Numeri.push_back(string(1, Rigo[i]));
+                }
             }
-            cout<<endl;*/
+
+            for (int i = 0; i < Numeri.size(); i++) {
+                cout<<Numeri[i];
+            }
+            cout<<endl;
+            for (int i = 0; i < Simboli.size(); ++i) {
+                cout<<Simboli[i];
+            }
+            cout<<endl;
 
             //!-- DA FINIRE --
-            //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE VAFFANCULO --
+            //!-- AIUTO NON SO COSA FARE ODIO LE STRINGHE E I VECTOR VAFFANCULO --
             //!-- NON SO NEMMENO SE STAVO ANDANDO BENE, SPERO DI SI --
             //!-- NEL NOME DEL PADRE, DEL FIGLIO E DELLO SPIRITO SANTO --
             //!-- da capire in modo più chiaro cosa bisgona fare in questo ciclo
@@ -76,7 +78,7 @@ public:
             //! caratteri appena creata con UNA RIGA ALLA VOLTA le righe del file "Problema.txt"
         }
 
-        F.close();                             //dopo tutte le operazioni chido il file
+        F.close();  //dopo tutte le operazioni chiudo il file
 
     }
 
