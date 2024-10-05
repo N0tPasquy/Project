@@ -1,4 +1,4 @@
-#include "header.hpp"
+#include "header1.hpp"
 #include <fstream>
 #include <string>
 using namespace std;
@@ -14,7 +14,24 @@ int main() {
         return 0;
     }
 
-    //nel main devo controllare quante caselle ci sono per ogni rigo
+    string rigoSol, rigoProb, simboli;
+    getline(S, rigoSol);
+    getline(P, rigoProb);
+    esito a(rigoSol, rigoProb);
+    simboli = a.scomponiSimboli(rigoSol);
+    cout<<simboli<<endl;
+    cout<<rigoSol<<endl;
+    if(a.confrontaSimboli(&rigoProb, &simboli)){
+        cout<<"I simboli non combaciano"<<endl; //invece di questo queto cout deve esserci il modo per scrivere su file
+    }else{
+        cout<<"I simboli combaciano"<<endl;
+        bool prova = a.verificaNumeri(rigoProb,rigoSol);
+        if(prova)
+            cout<<"vero"<<endl;
+        else
+            cout<<"falso"<<endl;
+    }
+
 
 
     /*Risolutore r;

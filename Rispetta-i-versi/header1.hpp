@@ -11,7 +11,9 @@
 #ifndef RISPETTA_I_VERSI_HEADER1_HPP
 #define RISPETTA_I_VERSI_HEADER1_HPP
 
+#include <iostream>
 #include <string>
+#include <cstring>
 #include <vector>
 using namespace std;
 
@@ -19,30 +21,37 @@ class esito{
 private:
     string soluzione;
     string problema;
-    int numCaselle;
 public:
-    esito(string* sol, string* prob, int num): soluzione(*sol), problema(*prob), numCaselle(num){};
+    esito(string sol, string prob): soluzione(sol), problema(prob){};
 
-    string scomponiSimboli(){
+    string scomponiSimboli(string &sol){
         string simboli;
-        for (int i = 0; i < soluzione.length(); i++) {
-            if(soluzione[i] == '<' || soluzione[i] == '>'){
-                simboli += soluzione[i];
-                numCaselle++;
+        for (int i = 0; i < sol.length(); i++) {
+            if(sol[i] == '<' || sol[i] == '>'){
+                simboli += sol[i];
+                sol.erase(i, 1);
             }
         }
         return simboli;
     }
 
-    string scomponiNumeri(){
-        string numeri;
-        stoi(soluzione);
-        for (int i = 0; i < soluzione.length(); i++) {
-            if(soluzione[i] >= 1 && soluzione[i] <= numCaselle){
-                numeri += soluzione[i];
+    bool confrontaSimboli(string *prob, string *simboli){
+        for(int i = 0; i < prob->length(); i++){
+            if(prob[i] != simboli[i]){
+                return false;
             }
         }
-        return numeri;
+        return true;
+    }
+
+    bool verificaNumeri(string simb, string &num){
+        cout<<simb.length()+1<<endl;
+        for (int i = 0; i < simb.length()+1; i++) {
+            if((num[i] - '0') > simb.length()+1){   //Con num[i] - '0' viene eseguita la sottrazione ASCII tra l' i-esimo num e 0,
+                return false;                       // questo permette la conversione da string a int
+            }
+        }
+        return true;
     }
 
 };
