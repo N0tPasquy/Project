@@ -15,9 +15,8 @@ private:
     string problema;
 public:
     rigo(): soluzione(" "), problema(" "){};
-    //rigo(string sol, string prob): soluzione(sol), problema(prob){};   //Per ogni istanza di esito, prendo in input l'
-                                                                        // i-esimo rigo che viene passato dall main
 
+    //! Provare a rendere questo metodo void e farlo lavorare con attributi della classe rigo
     string scomponiSimboli(string &sol){    //metodo per dividere i numeri dai simboli < e >
         string simboli;
         for (int i = 0; i < sol.length(); i++) {    //ciclo for per scorrere tutto il rigo attuale di soluzione
@@ -29,16 +28,16 @@ public:
         return simboli; //ritorno la nuova stringa contente i simboli < e > del rigo Soluzione.txt,
     }                   // mentre peri numeri lavoro direttamente sulla stringa originale tramite riferimento
 
-    bool confrontaSimboli(string *prob, string *simboli){   //metodo dove vengono confrontati i simboli trovati in precedenza con i simboli di "Problema.txt", prendo in input i puntatori alle stringhe
-        if(prob->length() != simboli->length())     //verifico che entrambi i righi abbiano la stessa lunghezza
-            return false;   // se così non fosse significa che non è soluzione, quindi ritorno falso
+    bool confrontaSimboli(string prob, string simboli){   //metodo dove vengono confrontati i simboli trovati in precedenza con i simboli di "Problema.txt", prendo in input i puntatori alle stringhe
+        if(prob.length() != simboli.length())     //verifico che entrambi i righi abbiano la stessa lunghezza
+            return true;   // se così non fosse significa che non è soluzione, quindi ritorno vero
 
-        for(int i = 0; i < prob->length(); i++){    //ciclo che scorre il rigo di problema
+        for(int i = 0; i <= prob.length(); i++){    //ciclo che scorre il rigo di problema
             if(prob[i] != simboli[i]){  //se l' i-esimo simbolo di "prob" e l' i-esimo simbolo di "simboli" sono
-                return false;           //diversi significa che non è soluzione, quindi ritorno falso
+                return true;           //diversi significa che non è soluzione, quindi ritorno vero
             }
         }
-        return true; //nel caso sia tutto uguale ritorno vero
+        return false; //nel caso sia tutto uguale ritorno false
     }
 
     bool controllaDuplicati(string &num){

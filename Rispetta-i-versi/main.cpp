@@ -5,13 +5,24 @@
 using namespace std;
 
 int main() {
-    fstream P, S;
-    S.open("Soluzione.txt", ios::in);
-    P.open("Problema.txt", ios::in);
+    ifstream P("Problema.txt"), S("Soluzione.txt");
+    ofstream E("Esito.txt");
 
-    if(!S || !P){   //Controllo se uno dei due file non è stato aperto correttamente
-        cerr << "Impossibile aprire il file"
-             << endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
+    if(!E){
+        ofstream E("Esito.txt");
+        if(!E){
+            cerr << "Impossibile aprire ii file 'Problema.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
+            return 0;
+        }
+    }
+
+    if(!S){   //Controllo se uno dei due file non è stato aperto correttamente
+        cerr << "Impossibile aprire ii file 'Soluzione.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
+        return 0;
+    }
+
+    if(!P){
+        cerr << "Impossibile aprire ii file 'Problema.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
         return 0;
     }
 
@@ -28,7 +39,7 @@ int main() {
     }
 
     if(nRigheProb != nRigheSol){
-        cout<<"Il file soluzione non e' compatibile con il problema"<<endl;
+        E<<"Il file soluzione non e' compatibile con il problema"<<endl;
         return 0;
     }
 
@@ -37,12 +48,17 @@ int main() {
 
     P.clear();
     S.clear();
+    E.clear();
     P.seekg(ios::beg);
     S.seekg(ios::beg);
+    E.seekp(ios::beg);
 
-    while(nRigheSol > 0){
-        cout<<"Rigo "<<i+1<<endl;
-        //codice che va ripetuto per ogni istanza
+    //! -- UNICA COSA DA FARE IMPORTANTE --
+    //! Dovremmo fare in modo che questi algoritmi lavorino sugli attributi di classe rigo,
+    //! evitando di lavorare sulle variabili utilizzate nel while
+
+    while(dim > 0){
+        //codice che va ripetuto per ogni rigo
         string rigoSol, rigoProb, simboli;
 
         getline(S, rigoSol);
@@ -50,35 +66,35 @@ int main() {
 
         simboli = A[i].scomponiSimboli(rigoSol);
 
-        if(A[i].confrontaSimboli(&rigoProb, &simboli)){
-            cout<<"I simboli non combaciano, scrivi su file Sbagliata"<<endl; //invece di questo cout deve esserci il modo per scrivere sul file Esito.txt "Sbagliata"
+        // Ritorna vero se i simboli sono diversi
+        if(A[i].confrontaSimboli(rigoProb, simboli)){
+            E<<"Sbagliata"<<endl;
         }else{
-            cout<<"I simboli combaciano, continua"<<endl;
+
             if(A[i].controllaDuplicati(rigoSol)){
 
                 if(A[i].verificaNumeri(&rigoProb,rigoSol)) {
-                    cout << "I numeri vanno bene, continua" << endl;
 
                     if(A[i].verificaUguaglianze(rigoProb, rigoSol)){
-                        cout<<"Scrivi su file Corretta"<<endl;
+                        E<<"Corretta"<<endl;
                     }else{
-                        cout<<"Le uguaglianze non sono verificate, scrivi su file Sbagliata"<<endl;
+                        E<<"Sbagliata"<<endl;
                     }
-
-                }else
-                    cout<<"I numeri non vanno bene, scrivi su file Sbagliata"<<endl;    //Invece di questo cout deve esserci il modo per scrivere sul file Esito.txt "Sbagliata"
-
+                }else {
+                    E << "Sbagliata" << endl;
+                }
             }else{
-                cout<<"Ci sono numeri duplicati, scrivi su file Sbagliata"<<endl;
+                E<<"Sbagliata"<<endl;
             }
         }
 
-        nRigheSol--;
+        dim--;
         i++;
     }
 
-    S.close();  //alla fine di tutto chiudo entrambi i file
+    S.close();  //alla fine di tutto chiudo tutti i file
     P.close();
+    E.close();
 
     return 0;
 }

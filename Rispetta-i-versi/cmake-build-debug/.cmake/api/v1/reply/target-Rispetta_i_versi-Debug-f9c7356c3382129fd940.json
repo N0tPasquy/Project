@@ -110,7 +110,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "header1.hpp",
+			"path" : "header.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],
