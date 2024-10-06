@@ -23,22 +23,34 @@ int main() {
     string rigoSol, rigoProb, simboli;
     getline(S, rigoSol);
     getline(P, rigoProb);
-    esito a(rigoSol, rigoProb);
+    rigo a(rigoSol, rigoProb);
     simboli = a.scomponiSimboli(rigoSol);
     cout<<simboli<<endl;
     cout<<rigoSol<<endl;
+
+    //prima di mettere nel while bisogna controllare che i due file abbiano lo stesso numero di righe
+    //tutto questo deve essere messo all' interno di un ciclo while che scorre tutte le righe fin quando non finisce, while(S.eof())
     if(a.confrontaSimboli(&rigoProb, &simboli)){
-        cout<<"I simboli non combaciano"<<endl; //invece di questo queto cout deve esserci il modo per scrivere sul file Esito.txt "Sbagliata"
+        cout<<"I simboli non combaciano, scrivi su file Sbagliata"<<endl; //invece di questo cout deve esserci il modo per scrivere sul file Esito.txt "Sbagliata"
     }else{
-        cout<<"I simboli combaciano"<<endl;
-        if(a.verificaNumeri(rigoProb,rigoSol))
-            cout<<"vero"<<endl; //! Arrivati a questo punto: abbiamo verificato che i simboli combacino,
-                                //! abbiamo verificato che i numeri siano giusti, dobbiamo continuare e fare tutti i confronti tra i numeri
-                                //! consiglio di fare prima questo metodo e solo una volta finito di continuare con la scrittura sul
-                                //! file "Esito.txt", bisogna verificare se esiste già e poi aggiungere in "APPEND" l' esito.
-                                //! Se il file "Esito.txt" non esiste nel primo caso, bisogna crearlo
-        else
-            cout<<"falso"<<endl;    //Invevece di questo cout deve esserci il modo per scrivere sul file Esito.txt "Sbagliata"
+        cout<<"I simboli combaciano, continua"<<endl;
+        if(a.controllaDuplicati(rigoSol)){
+
+            if(a.verificaNumeri(&rigoProb,rigoSol)) {
+                cout << "I numeri vanno bene, continua" << endl;
+
+                if(a.verificaUguaglianze(rigoProb, rigoSol)){
+                    cout<<"Scrivi su file Corretta"<<endl;
+                }else{
+                    cout<<"Scrivi su file Sbagliata"<<endl;
+                }
+
+            }else
+                cout<<"I numeri non vanno bene, scrivi su file Sbagliata"<<endl;    //Invece di questo cout deve esserci il modo per scrivere sul file Esito.txt "Sbagliata"
+
+        }else{
+            cout<<"Ci sono numeri duplicati, scrivi su file Sbagliata"<<endl;
+        }
     }
 
 
