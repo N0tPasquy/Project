@@ -18,14 +18,6 @@ public:
     //rigo(string sol, string prob): soluzione(sol), problema(prob){};   //Per ogni istanza di esito, prendo in input l'
                                                                         // i-esimo rigo che viene passato dall main
 
-    void setSoluzione(string sol){
-        soluzione = sol;
-    }
-
-    void setProblema(string prob){
-        problema = prob;
-    }
-
     string scomponiSimboli(string &sol){    //metodo per dividere i numeri dai simboli < e >
         string simboli;
         for (int i = 0; i < sol.length(); i++) {    //ciclo for per scorrere tutto il rigo attuale di soluzione
