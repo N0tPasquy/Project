@@ -2,13 +2,11 @@
 // Created by Pasquale on 05/10/2024.
 //
 
-#ifndef RISPETTA_I_VERSI_HEADER1_HPP
-#define RISPETTA_I_VERSI_HEADER1_HPP
+#ifndef RISPETTA_I_VERSI_HEADER_HPP
+#define RISPETTA_I_VERSI_HEADER_HPP
 
-#include <iostream>
 #include <string>
 #include <cstring>
-#include <vector>
 using namespace std;
 
 class rigo{
@@ -16,8 +14,17 @@ private:
     string soluzione;   //variabili dove salvo il contenuto di ogni rigo che viene passato in input
     string problema;
 public:
-    rigo(string sol, string prob): soluzione(sol), problema(prob){};   //Per ogni istanza di esito, prendo in input l'
+    rigo(): soluzione(" "), problema(" "){};
+    //rigo(string sol, string prob): soluzione(sol), problema(prob){};   //Per ogni istanza di esito, prendo in input l'
                                                                         // i-esimo rigo che viene passato dall main
+
+    void setSoluzione(string sol){
+        soluzione = sol;
+    }
+
+    void setProblema(string prob){
+        problema = prob;
+    }
 
     string scomponiSimboli(string &sol){    //metodo per dividere i numeri dai simboli < e >
         string simboli;
@@ -81,4 +88,4 @@ public:
 
 };
 
-#endif //RISPETTA_I_VERSI_HEADER1_HPP
+#endif //RISPETTA_I_VERSI_HEADER_HPP
