@@ -53,10 +53,6 @@ int main() {
     S.seekg(ios::beg);
     E.seekp(ios::beg);
 
-    //! -- UNICA COSA DA FARE IMPORTANTE --
-    //! Dovremmo fare in modo che questi algoritmi lavorino sugli attributi di classe rigo,
-    //! evitando di lavorare sulle variabili utilizzate nel while
-
     while(dim > 0){
         //codice che va ripetuto per ogni rigo
         string rigoSol, rigoProb, simboli;
@@ -64,18 +60,20 @@ int main() {
         getline(S, rigoSol);
         getline(P, rigoProb);
 
-        simboli = A[i].scomponiSimboli(rigoSol);
+        A[i].setSoluzione(rigoSol);
+        A[i].setProblema(rigoProb);
+        A[i].scomponiSimboli();
 
         // Ritorna vero se i simboli sono diversi
-        if(A[i].confrontaSimboli(rigoProb, simboli)){
+        if(A[i].confrontaSimboli()){
             E<<"Sbagliata"<<endl;
         }else{
 
-            if(A[i].controllaDuplicati(rigoSol)){
+            if(A[i].controllaDuplicati()){
 
-                if(A[i].verificaNumeri(&rigoProb,rigoSol)) {
+                if(A[i].verificaNumeri()) {
 
-                    if(A[i].verificaUguaglianze(rigoProb, rigoSol)){
+                    if(A[i].verificaUguaglianze()){
                         E<<"Corretta"<<endl;
                     }else{
                         E<<"Sbagliata"<<endl;
@@ -87,7 +85,6 @@ int main() {
                 E<<"Sbagliata"<<endl;
             }
         }
-
         dim--;
         i++;
     }
