@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Rispetta_i_versi::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Rispetta_i_versi-Debug-6c9f5b6cb357f747679c.json",
+					"jsonFile" : "target-Rispetta_i_versi-Debug-f9c7356c3382129fd940.json",
 					"name" : "Rispetta_i_versi",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/GitHubDesktop/Project/Rispetta-i-versi/cmake-build-debug",
-		"source" : "D:/GitHubDesktop/Project/Rispetta-i-versi"
+		"build" : "C:/Users/Nazzaro/Documents/GitHub/Project/Rispetta-i-versi/cmake-build-debug",
+		"source" : "C:/Users/Nazzaro/Documents/GitHub/Project/Rispetta-i-versi"
 	},
 	"version" : 
 	{
