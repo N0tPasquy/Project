@@ -1,5 +1,5 @@
 //
-// Created by Pasquale on 05/10/2024.
+// Created by Pasquale & Nazzaro il patatone on 05/10/2024.
 //
 
 #ifndef RISPETTA_I_VERSI_HEADER_HPP
