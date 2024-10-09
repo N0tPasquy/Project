@@ -1,3 +1,3 @@
-C:/Users/Nazzaro/Documents/GitHub/Project/Rispetta-i-versi/cmake-build-debug/CMakeFiles/Rispetta_i_versi.dir
-C:/Users/Nazzaro/Documents/GitHub/Project/Rispetta-i-versi/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Nazzaro/Documents/GitHub/Project/Rispetta-i-versi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/GitHubDesktop/Project/Rispetta-i-versi/cmake-build-debug/CMakeFiles/Rispetta_i_versi.dir
+D:/GitHubDesktop/Project/Rispetta-i-versi/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/GitHubDesktop/Project/Rispetta-i-versi/cmake-build-debug/CMakeFiles/rebuild_cache.dir

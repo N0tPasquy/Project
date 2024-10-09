@@ -9,14 +9,11 @@ int main() {
     ofstream E("Esito.txt");    //apro in output il file su cui bisogna scrivere l' esito
 
     if(!E){ //controllo che ogni file venga aperto in modo corretto
-        ofstream E("Esito.txt");
-        if(!E){
             cerr << "Impossibile aprire ii file 'Problema.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
             return 0;
-        }
     }
 
-    if(!S){   //Controllo se uno dei due file non è stato aperto correttamente
+    if(!S){
         cerr << "Impossibile aprire ii file 'Soluzione.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
         return 0;
     }
@@ -54,7 +51,7 @@ int main() {
     S.seekg(ios::beg);
     E.seekp(ios::beg);
 
-    while(dim > 0){ //il ciclo viene ripetuto "dim" volte, dove dim sono il numero di righi dei file
+    while(dim > 0){ //il ciclo viene ripetuto "dim" volte, dove dim è il numero di righi dei file
         //codice che va ripetuto per ogni rigo
         string rigoSol, rigoProb, simboli;
 
@@ -64,7 +61,6 @@ int main() {
         A[i].setSoluzione(rigoSol);
         A[i].setProblema(rigoProb);
         A[i].scomponiSimboli();
-
 
         if(A[i].confrontaSimboli()){    // Ritorna vero se i simboli sono diversi
             E<<"Sbagliata"<<endl;
@@ -80,7 +76,7 @@ int main() {
                         E<<"Sbagliata"<<endl;
                     }
                 }else {
-                    E << "Sbagliata" << endl;
+                    E<<"Sbagliata"<< endl;
                 }
             }else{
                 E<<"Sbagliata"<<endl;

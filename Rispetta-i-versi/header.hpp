@@ -25,7 +25,6 @@ public:
         problema = prob;
     }
 
-
     void scomponiSimboli(){                                //! Estrae i simboli < e > da una stringa (soluzione) e li salva in un’altra stringa (simboli),
         for (int i = 0; i < soluzione.length(); i++) {      //! eliminandoli dalla stringa originale.
             if(soluzione[i] == '<' || soluzione[i] == '>'){
