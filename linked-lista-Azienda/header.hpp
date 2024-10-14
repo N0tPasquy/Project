@@ -2,7 +2,7 @@
 // Created by Pasquale on 12/10/2024.
 //
 //Progettare e implementare una lista (linked list) di
-//impiegati di un'azienda. Un impiegato ha un nome ed un
+//impiegati di un'azienda. Un impiegato ha un nome e un
 //salario. Un manager è un impiegato cui viene corrisposto
 //un bonus oltre al salario.
 
@@ -63,8 +63,9 @@ public:
         dati = tmp;
         next = nullptr;
     }
-    impiegato getDati(){
-        return *dati;
+
+    impiegato* getDati(){
+        return dati;
     }
 
     void setNext(nodo* n){
@@ -79,17 +80,17 @@ public:
 class lista{
 private:
     nodo* head;
-    nodo* current;
+    nodo* last;
 public:
-    lista() : head(nullptr), current(nullptr){};
+    lista() : head(nullptr), last(nullptr){};
 
     void insert(impiegato* tmp){
         nodo* newNodo = new nodo(tmp);
         if(head == nullptr){
-            current = head = newNodo;
+            last = head = newNodo;
         }else{
-            current->setNext(newNodo);
-            current = newNodo;
+            last->setNext(newNodo);
+            last = newNodo;
         }
     }
 
@@ -100,7 +101,7 @@ public:
             return;
         }
         while (tmp != nullptr){
-            tmp->getDati().stampa();
+            tmp->getDati()->stampa();
             tmp = tmp->getNext();
         }
     }
@@ -109,7 +110,7 @@ public:
         float sommaSalari = 0;
         nodo* tmp = head;
         while (tmp != nullptr){
-            sommaSalari += tmp->getDati().getSalario();
+            sommaSalari += tmp->getDati()->getSalario();
             tmp = tmp->getNext();
         }
         return sommaSalari;

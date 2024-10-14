@@ -5,8 +5,7 @@ int main() {
     cout<<"Lista dei dipendenti: "<<endl;
 
     lista Azienda;
-    //!PROBLEMA - l' impiegato B dovrebbe essere visualizzato come manager, invece viene elaborato come impegato semplice.
-    //! RISOLVERE
+
     impiegato* A = new impiegato("Mario Rossi", 1300);
     impiegato* B = new manager("Michelangelo Naslyednikov", 1600, 100);
 
