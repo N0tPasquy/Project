@@ -9,4 +9,7 @@
 --> Rispetto per nessuno, paura di tutti <3 ❤️
 
 --> Rispetta-i-versi
-    - è un esercizio da svolgere per il Laboratorio di ASD
+    - è un esercizio finito per il Laboratorio di ASD
+
+--> linked-list-Azienda
+    - è un esericizio finito per il laboratorio di ASD
