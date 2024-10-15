@@ -51,37 +51,35 @@ int main() {
     S.seekg(ios::beg);
     E.seekp(ios::beg);
 
-    while(dim > 0){ //il ciclo viene ripetuto "dim" volte, dove dim è il numero di righi dei file
-        //codice che va ripetuto per ogni rigo
-        string rigoSol, rigoProb, simboli;
+    string rigoSol, rigoProb;  //inizializzo le stringhe di appoggio
 
-        getline(S, rigoSol);
+    while (dim > 0){
+        getline(S, rigoSol);    //salvo il rigo del file nella stringa
         getline(P, rigoProb);
 
-        A[i].setSoluzione(rigoSol);
+        A[i].setSoluzione(rigoSol); // Passo la stringa appena salvata all' oggetto
         A[i].setProblema(rigoProb);
-        A[i].scomponiSimboli();
+        A[i].solToInt();    //metodo che scompone i numeri e i simboli del rigo Soluzione
 
-        if(A[i].confrontaSimboli()){    // Ritorna vero se i simboli sono diversi
-            E<<"Sbagliata"<<endl;
-        }else{
-
-            if(A[i].controllaDuplicati()){  // Ritorna vero se non ci sono duplicati
-
-                if(A[i].verificaNumeri()) { // Ritorna vero se i numeri all' interno di soluzione soddisfano la traccia
-
-                    if(A[i].verificaUguaglianze()){ //Ritorna vero se tutte le uguaglianze di soluzione sono verificate
+        // Serie di if a cascata che controlla se le varie condizioni siano verificate
+        if(A[i].confrontaSimboli()){
+            if (A[i].controllaDuplicati()){
+                if(A[i].verificaNumeri()){
+                    if(A[i].verificaUguaglianze()){
                         E<<"Corretta"<<endl;
                     }else{
                         E<<"Sbagliata"<<endl;
                     }
-                }else {
-                    E<<"Sbagliata"<< endl;
+                }else{
+                    E<<"Sbagliata"<<endl;
                 }
             }else{
                 E<<"Sbagliata"<<endl;
             }
+        }else{
+            E<<"Sbagliata"<<endl;
         }
+
         dim--;
         i++;
     }
