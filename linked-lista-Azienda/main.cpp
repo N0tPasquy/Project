@@ -1,5 +1,4 @@
 #include "header.hpp"
-using namespace std;
 
 int main() {
     cout<<"Lista dei dipendenti: "<<endl;
