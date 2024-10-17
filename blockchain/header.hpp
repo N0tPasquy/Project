@@ -9,15 +9,15 @@
 #include <string>
 using namespace std;
 
-class transizione{
+class transazione{
 private:
     string from;
     string to;
     int qt;
 public:
-    transizione(){};
+    transazione() : from(""), to(""), qt(0){};
 
-    transizione(string f, string t , int q){
+    transazione(string f, string t , int q){
         from = f;
         to = t;
         qt = q;
@@ -43,32 +43,10 @@ public:
     int getQt(){
         return qt;
     }
-};
 
-template <class T>
-class nodo;
-
-template <class T>
-class list{
-private:
-    nodo<T>* head;
-public:
-    list() : head(nullptr){};
-
-    void insert(T tmp){
-        nodo<T>* newNodo = new nodo<T>(tmp);
-        if(head == nullptr){
-            head = newNodo;
-        }else{
-            newNodo->setNext(head);
-            head = newNodo;
-        }
+    void stampa(){
+        cout<<"Transizione DA "<<from<<" A "<<to<<", quantita' di denaro trasferita: "<<qt<<endl;
     }
-
-    nodo<T>* getHead(){
-        return head;
-    }
-
 };
 
 template <class T>
@@ -77,21 +55,54 @@ private:
     T dato;
     nodo* next;
 public:
-    nodo(T d){
+    nodo(T d) : next(nullptr){
         dato = d;
     }
 
-    void setDato(T d){
-        dato = d;
-    }
-    T getDato(){
-        return dato;
-    }
     void setNext(nodo* n){
         next = n;
     }
+
     nodo* getNext(){
         return next;
+    }
+
+    T getDato(){
+        return dato;
+    }
+};
+
+template <class T>
+class lista{
+private:
+    nodo<T>* head;
+public:
+    lista() : head(nullptr){};
+
+    void insert(T d){
+        nodo<T>* newNodo = new nodo<T>(d);
+        if (head == nullptr){
+            head = newNodo;
+        }else{
+            newNodo->setNext(head);
+            head = newNodo;
+        }
+    }
+
+    void stampa(string key){
+        int saldoFinale = 0;
+        nodo<T>* current = head;
+        while (current != nullptr){
+            if(current->getDato().getFrom() == key){
+                current->getDato().stampa();
+                saldoFinale -= current->getDato().getQt();
+            }else if( current->getDato().getTo() == key){
+                current->getDato().stampa();
+                saldoFinale += current->getDato().getQt();
+            }
+            current = current->getNext();
+        }
+        cout<<"Saldo finale pari a: "<<saldoFinale;
     }
 };
 
