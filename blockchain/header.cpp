@@ -33,6 +33,6 @@ int transizione::getQt() {
     return qt;
 }
 
-blocco::blocco(T* tmp, ){
+blocco::blocco(T* tmp, blocco *next){
     
 }
