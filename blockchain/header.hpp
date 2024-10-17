@@ -15,31 +15,84 @@ private:
     string to;
     int qt;
 public:
-    transizione(string, string, int);
+    transizione(){};
 
-    void setFrom(string);
-    string getFrom();
+    transizione(string f, string t , int q){
+        from = f;
+        to = t;
+        qt = q;
+    }
 
-    void setTo(string);
-    string getTo();
+    void setFrom(string f){
+        from = f;
+    }
+    string getFrom(){
+        return from;
+    }
 
-    void setQt(int);
-    int getQt();
+    void setTo(string t){
+        to = t;
+    }
+    string getTo(){
+        return to;
+    }
+
+    void setQt(int q){
+        qt = q;
+    }
+    int getQt(){
+        return qt;
+    }
 };
 
 template <class T>
-class blocco{
+class nodo;
+
+template <class T>
+class list{
 private:
-    T* contenuto;
-    blocco *next;
+    nodo<T>* head;
 public:
-    blocco(T*, blocco*);
+    list() : head(nullptr){};
 
-    void setContenuto(T*);
-    T* getContenuto();
+    void insert(T tmp){
+        nodo<T>* newNodo = new nodo<T>(tmp);
+        if(head == nullptr){
+            head = newNodo;
+        }else{
+            newNodo->setNext(head);
+            head = newNodo;
+        }
+    }
 
-    void setNext(blocco*);
-    blocco* getNext();
+    nodo<T>* getHead(){
+        return head;
+    }
+
+};
+
+template <class T>
+class nodo{
+private:
+    T dato;
+    nodo* next;
+public:
+    nodo(T d){
+        dato = d;
+    }
+
+    void setDato(T d){
+        dato = d;
+    }
+    T getDato(){
+        return dato;
+    }
+    void setNext(nodo* n){
+        next = n;
+    }
+    nodo* getNext(){
+        return next;
+    }
 };
 
 #endif //BLOCKCHAIN_HEADER_HPP
