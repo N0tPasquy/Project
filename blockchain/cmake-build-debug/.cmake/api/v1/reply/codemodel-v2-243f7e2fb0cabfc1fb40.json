@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/GitHubDesktop/Project/blockchain/cmake-build-debug",
-		"source" : "D:/GitHubDesktop/Project/blockchain"
+		"build" : "C:/Users/Nazzaro/Documents/GitHub/Project/blockchain/cmake-build-debug",
+		"source" : "C:/Users/Nazzaro/Documents/GitHub/Project/blockchain"
 	},
 	"version" : 
 	{
