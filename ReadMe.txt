@@ -13,3 +13,6 @@
 
 --> linked-list-Azienda
     - è un esericizio finito per il laboratorio di ASD
+
+--> blockchain
+    - è un esercizio che simula in modo molto approssimativo una blockchain
