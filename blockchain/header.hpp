@@ -76,16 +76,37 @@ template <class T>
 class lista{
 private:
     nodo<T>* head;
+    nodo<T>* tail;
 public:
-    lista() : head(nullptr){};
+    lista() : head(nullptr), tail(nullptr){};
 
-    void insert(T d){
+    nodo<T>* getHead(){
+        return head;
+    }
+
+    void insertAtTail(T d){
         nodo<T>* newNodo = new nodo<T>(d);
         if (head == nullptr){
-            head = newNodo;
+            head = tail = newNodo;
         }else{
-            newNodo->setNext(head);
-            head = newNodo;
+            tail->setNext(newNodo);
+            tail = newNodo;
+        }
+    }
+
+    void removeHead(){
+        if(head == nullptr)
+            cout<<"Lista già vuota"<<endl;
+        else{
+            nodo<T>* tmp = head;
+            head = head->getNext();
+            delete tmp;
+        }
+    }
+
+    ~lista(){
+        while (head != nullptr){
+            removeHead();
         }
     }
 
