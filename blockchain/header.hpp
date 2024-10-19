@@ -127,4 +127,33 @@ public:
     }
 };
 
+//! Dalla riga 131 fino a 151 (le liste di transizioni e le liste di blocchi) sono da controllare e verificare se sono state implementate correttamente
+class blocco{
+private:
+    lista<transazione>* listaTransizioni;
+public:
+    blocco(){};
+
+    lista<transazione>* getListaTransizioni(){
+        return listaTransizioni;
+    }
+
+    //! Da rivedere il metodo per stampare
+    void stampa1(string key){
+        listaTransizioni->stampa(key);
+    }
+
+};
+
+class blockChain{
+private:
+    lista<blocco>* listaBlockChain;
+public:
+    blockChain(){};
+
+    lista<blocco>* getListaBlockChain(){
+        return listaBlockChain;
+    }
+};
+
 #endif //BLOCKCHAIN_HEADER_HPP
