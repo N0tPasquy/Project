@@ -1,0 +1,4 @@
+# ninja log v5
+3	453	7511407528495345	CMakeFiles/blockchain.dir/main.cpp.obj	b74e75ed851d2c0c
+453	582	7511407529765363	blockchain.exe	942ead74863ffd1e
+1	250	7511424136100284	build.ninja	3be5f9d61248bd50

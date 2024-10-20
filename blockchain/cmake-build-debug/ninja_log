@@ -1,8 +1,0 @@
-# ninja log v5
-3	420	7511406949879239	CMakeFiles/blockchain.dir/main.cpp.obj	b74e75ed851d2c0c
-421	562	7511406951259256	blockchain.exe	942ead74863ffd1e
-1	250	7508936763997192	build.ninja	3be5f9d61248bd50
-3	458	7511407066736220	CMakeFiles/blockchain.dir/main.cpp.obj	b74e75ed851d2c0c
-458	643	7511407068456243	blockchain.exe	942ead74863ffd1e
-3	453	7511407528495345	CMakeFiles/blockchain.dir/main.cpp.obj	b74e75ed851d2c0c
-453	582	7511407529765363	blockchain.exe	942ead74863ffd1e
