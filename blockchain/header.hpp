@@ -110,49 +110,76 @@ public:
         }
     }
 
-    void stampa(string key){
-        int saldoFinale = 0;
+    int stampa(string key){
+        int saldo = 0;
         nodo<T>* current = head;
-        while (current != nullptr){
+        while(current != nullptr){
             if(current->getDato().getFrom() == key){
                 current->getDato().stampa();
-                saldoFinale -= current->getDato().getQt();
-            }else if( current->getDato().getTo() == key){
+                saldo -= current->getDato().getQt();
+            }else if(current->getDato().getTo() == key){
                 current->getDato().stampa();
-                saldoFinale += current->getDato().getQt();
+                saldo += current->getDato().getQt();
             }
             current = current->getNext();
         }
-        cout<<"Saldo finale pari a: "<<saldoFinale;
+        return saldo;
     }
 };
 
-//! Dalla riga 131 fino a 151 (le liste di transizioni e le liste di blocchi) sono da controllare e verificare se sono state implementate correttamente
 class blocco{
 private:
-    lista<transazione>* listaTransizioni;
+    lista<transazione> listaTransizioni;
 public:
     blocco(){};
 
-    lista<transazione>* getListaTransizioni(){
+    void aggiungiTransazione(transazione t){
+        listaTransizioni.insertAtTail(t);
+    }
+
+    lista<transazione> getListaTransizioni(){
         return listaTransizioni;
     }
 
-    //! Da rivedere il metodo per stampare
-    void stampa1(string key){
-        listaTransizioni->stampa(key);
+    int stampaTransazione(string key){
+        return listaTransizioni.stampa(key);
     }
 
 };
 
 class blockChain{
 private:
-    lista<blocco>* listaBlockChain;
+    lista<blocco> listaBlockChain;
 public:
     blockChain(){};
 
-    lista<blocco>* getListaBlockChain(){
+    void aggiungiBlocco(blocco b){
+        listaBlockChain.insertAtTail(b);
+    }
+
+    lista<blocco> getListaBlockChain(){
         return listaBlockChain;
+    }
+
+    void stampaTransizioni(string key){
+        nodo<blocco>* current = listaBlockChain.getHead();
+        int saldoFinale = 0;
+        while (current != nullptr){
+            saldoFinale += current->getDato().stampaTransazione(key);
+            current = current->getNext();
+        }
+        cout<<"Saldo finale di "<<key<<" pari a " <<saldoFinale<<endl;
+    }
+
+    bool exist(string key){
+        nodo<blocco>* current = listaBlockChain.getHead();
+        while (current != nullptr){
+            if(current->getDato().getListaTransizioni().getHead()->getDato().getFrom() == key || current->getDato().getListaTransizioni().getHead()->getDato().getTo() == key){
+                return true;
+            }
+            current = current->getNext();
+        }
+        return false;
     }
 };
 

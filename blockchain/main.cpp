@@ -1,35 +1,34 @@
 #include "header.hpp"
 
 int main() {
-    /*lista<transazione> blockchain;
-
-    blockchain.insertAtTail(transazione("Alice", "Bob", 50));
-    blockchain.insertAtTail(transazione("Bob", "Charlie", 20));
-    blockchain.insertAtTail(transazione("Charlie", "Alice", 30));
-
-    string indirizzo = "Alice";
-    blockchain.stampa(indirizzo);*/
-
     blockChain blockChain;
     blocco blocco1;
     blocco blocco2;
     blocco blocco3;
 
-    blocco1.getListaTransizioni()->insertAtTail(transazione("Alice", "Bob", 50));
-    blocco1.getListaTransizioni()->insertAtTail(transazione("Bob", "Charlie", 20));
-    blocco1.getListaTransizioni()->insertAtTail(transazione("Charlie", "Alice", 30));
+    transazione t1("Alice", "Bob", 50);
+    transazione t2("Bob", "Charlie", 20);
+    transazione t3("Charlie", "Alice", 30);
+    transazione t4("Bob", "Alice", 35);
+    transazione t5("Alice", "Charlie", 5);
+    transazione t6("Alice", "Bob", 2);
 
-    blocco2.getListaTransizioni()->insertAtTail(transazione("Bob", "Alice", 35));
-    blocco2.getListaTransizioni()->insertAtTail(transazione("Alice", "Charlie", 5));
+    blocco1.aggiungiTransazione(t1);
+    blocco1.aggiungiTransazione(t2);
+    blocco1.aggiungiTransazione(t3);
+    blockChain.aggiungiBlocco(blocco1);
 
-    blocco3.getListaTransizioni()->insertAtTail(transazione("Alice", "Bob", 2));
+    blocco2.aggiungiTransazione(t4);
+    blocco2.aggiungiTransazione(t5);
+    blockChain.aggiungiBlocco(blocco2);
 
-    blockChain.getListaBlockChain()->insertAtTail(blocco1);
-    blockChain.getListaBlockChain()->insertAtTail(blocco2);
-    blockChain.getListaBlockChain()->insertAtTail(blocco3);
+    blocco3.aggiungiTransazione(t6);
+    blockChain.aggiungiBlocco(blocco3);
 
-    //! Da rivedere il metodo per stampare
-    blockChain.getListaBlockChain()->stampa("Alice");
+    if(blockChain.exist("Alice"))
+        blockChain.stampaTransizioni("Alice");
+    else
+        cout<<"Non esiste nessuno con quell' indirizzo!"<<endl;
 
     return 0;
 }
