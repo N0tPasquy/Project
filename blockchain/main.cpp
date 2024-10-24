@@ -2,6 +2,7 @@
 
 //Semplice main dove creo delle transazioni e le inserisco all' interno della lista blocchi
 //Aggiungo poi i blocchi all' interno della lista blockChain
+//! TO DO - Fare in modo che invece di scrivere a video e leggere in input, il programma legga da file le transazioni e scriva su file i risultati della ricerca
 int main() {
     blockChain blockChain;
     blocco blocco1;
