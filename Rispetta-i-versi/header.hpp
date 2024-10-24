@@ -6,7 +6,6 @@
 #define RISPETTA_I_VERSI_HEADER_HPP
 
 #include <string>
-#include <cstring>
 #include <vector>
 #include <iostream>
 
@@ -14,9 +13,7 @@ using namespace std;
 
 class rigo{
 private:
-    string soluzione;   //variabili dove salvo il contenuto di ogni rigo che viene passato in input
-    string problema;
-    string simboli;
+    string soluzione, problema, simboli;   //variabili dove salvo il contenuto di ogni rigo che viene passato in input
     vector <int> numeri;
 public:
     rigo(): soluzione(" "), problema(" "){};
