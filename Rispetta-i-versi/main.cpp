@@ -1,5 +1,4 @@
 #include "header.hpp"
-#include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -9,7 +8,7 @@ int main() {
     ofstream E("Esito.txt");    //apro in output il file su cui bisogna scrivere l' esito
 
     if(!E){ //controllo che ogni file venga aperto in modo corretto
-            cerr << "Impossibile aprire ii file 'Problema.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
+            cerr << "Impossibile aprire ii file 'Esito.txt'"<< endl;     //Con questo if controllo se il file è stato aperto correttamente, se così non fosse notifico a video ed esco dal programma
             return 0;
     }
 
@@ -41,7 +40,7 @@ int main() {
     }
 
     int dim = nRigheSol, i = 0; //contatori interi per il ciclo while
-    rigo A[nRigheSol];  //creo l' array di oggetti di tipo rigo, per ogni posizione dell' array corrisponde un rigo del problema e un rigo della soluzione
+    rigo A[dim];  //creo l' array di oggetti di tipo rigo, per ogni posizione dell' array corrisponde un rigo del problema e un rigo della soluzione
 
     //metodi che reimpostano il puntatore del file all'inizio
     P.clear();
@@ -61,7 +60,7 @@ int main() {
         A[i].setProblema(rigoProb);
         A[i].solToInt();    //metodo che scompone i numeri e i simboli del rigo Soluzione
 
-        // Serie di if a cascata che controlla se le varie condizioni siano verificate
+        // Serie di if a cascata che controllano se le varie condizioni siano verificate
         if(A[i].confrontaSimboli()){
             if (A[i].controllaDuplicati()){
                 if(A[i].verificaNumeri()){
