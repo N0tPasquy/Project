@@ -1,0 +1,3 @@
+D:/GitHubDesktop/Project/gioco-del-15/cmake-build-debug/CMakeFiles/gioco_del_15.dir
+D:/GitHubDesktop/Project/gioco-del-15/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/GitHubDesktop/Project/gioco-del-15/cmake-build-debug/CMakeFiles/rebuild_cache.dir
