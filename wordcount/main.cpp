@@ -3,8 +3,6 @@
  * numero di occorrenze di ogni parola contenuta in un file
  */
 
-//!scrivere commenti e ripetere gli argomenti nuovi
-
 #include <iostream>
 #include <string>
 #include <fstream>  //libreria per i file
@@ -24,11 +22,16 @@ int main() {
     }
 
     //Il programma è case sensitive
-    while (!input.eof()){   //ripete fin quando non finisce il file
-        getline(input, line, ' ');  //ritorna ogni parola prima di uno spazio
-        while (!line.empty() && (line.back() == ',' || line.back() == '.'))     //controlla che alla fine di ogni parola non ci sia un punto o una virgola
-            line.pop_back();    //se ci fosse eseguendo pop_back() rimuove l' ultimo elemento in coda, nel nostro caso la virgola o il punto
-        occorrenze[line]++; //incrementa il numero di occorrenze della parola trovata, se non c'è nella map, automaticamente crea una nuova posizione con key uguale alla parola mancante
+    map<string ,int>::iterator it;
+    while (input >> line){   //copio ogni parola divisa da uno spazio all' interno di line
+        if (line.back() == ',' || line.back() == '.')     //controlla che alla fine di ogni parola non ci sia un punto o una virgola
+            line.pop_back();    //se c'è, esegue pop_back() rimuove l' ultimo elemento in coda, nel nostro caso la virgola o il punto
+        it = occorrenze.find(line);     //.find() restituisce l' iteratore
+        if(it == occorrenze.end()){
+            occorrenze.insert(pair<string, int>(line, 1));
+        }else{
+            it->second++;   //accedo alla seconda sezione di mappa alla posizione it e incremento quel valore
+        }
     }
 
     input.close();  //chiudo il file aperto in precedenza
