@@ -15,4 +15,10 @@
     - è un esericizio finito per il laboratorio di ASD
 
 --> blockchain
-    - è un esercizio che simula in modo molto approssimativo una blockchain
+    - esercizio dove simulato in modo molto approssimativo una blockchain
+
+--> gioco-del-15
+    - esercizio che individua se una data matrice letta in input da file corrisponde alla soluzione del gioco
+
+--> wordcount
+    - esercizio in cui vengono contate tutte le occorrenze di ogni parola all' interno di un testo letto da file
