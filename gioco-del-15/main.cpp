@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <string>
 #include <sstream>
 #include <thread>
 #include <mutex>
@@ -21,7 +20,7 @@ int main() {
         th[i] = thread(verifica, ref(corretto), ref(mux), ref(nomeFiles[i]));
     }
 
-    for(int i = 0; i < 2; ++i) {
+    for(int i = 0; i < 2; i++) {
         th[i].join();
     }
 

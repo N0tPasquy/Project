@@ -4,7 +4,6 @@
  */
 
 #include <iostream>
-#include <string>
 #include <fstream>  //libreria per i file
 #include <map>  //libreria per usare le map
 using namespace std;
